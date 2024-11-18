@@ -1,6 +1,8 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+Refer Task_Requirement.txt 
+
 1. Run Postgress DB docker container in api 
     docker-compose.yml file
     docker-compose up -d
@@ -12,6 +14,8 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 3. Run UI 
     yarn run dev
 
+    http://localhost:3000/create-user
+    http://localhost:3000/user-list
 
 First, run the development server:
 

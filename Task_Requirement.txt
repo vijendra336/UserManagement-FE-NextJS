@@ -1,0 +1,384 @@
+Project Requirements for User Management Application
+Objective
+Create a C# 6.0 project using Domain-Driven Design principles to build a simple user management application.
+Tech Stack
+Backend: .NET (6) with Entity Framework
+Frontend: Next.js (TypeScript) for form creation and validation
+Database: PostgreSQL, run within a Docker container
+Features and Requirements
+1. Domain Model
+Define a UserEntity class to represent the user model:
+
+public class UserEntity
+
+{
+
+public string FirstName { get; set; }
+
+public string LastName { get; set; }
+
+public DateTime DateOfBirth { get; set; }
+
+public string PhoneNumber { get; set; }
+
+}
+
+2. Frontend Requirements
+Develop the following pages using Next.js:
+User Creation Page:
+A form for entering user details: First Name, Last Name, Date of Birth, and Phone Number.
+Implement form validation with:
+Required fields for all inputs.
+Proper formatting checks for Date of Birth and Phone Number.
+Provide real-time feedback to the user for any validation errors.
+User List Page:
+Display a list of all users stored in the database.
+Include pagination to improve the user experience when there are many users.
+3. Data Validation Requirements
+Name Validation:
+Both FirstName and LastName fields must not be null or empty and must contain more than 1 character.
+Date of Birth (DOB) Validation:
+Ensure the user is at least 18 years old.
+Phone Number Formatting:
+The phone number should be stored and displayed in a standard format (e.g., (XXX) XXX-XXXX).
+Client-Side Validation:
+Validate data directly in the Next.js form to provide immediate feedback to the user.
+Server-Side Validation:
+Ensure data meets validation requirements on the backend before persisting it to the database.
+4. Database Setup
+Use PostgreSQL as the database for storing user data.
+Docker:
+Configure a docker-compose.yml file to spin up a PostgreSQL instance for local development.
+Example docker-compose.yml configuration:
+
+version: '3.8'
+
+services:
+
+postgres:
+
+image: postgres:latest
+
+environment:
+
+POSTGRES_USER: user
+
+POSTGRES_PASSWORD: password
+
+POSTGRES_DB: userdb
+
+ports:
+
+- "5432:5432"
+
+Entity Framework Configuration:
+Use Entity Framework to connect to PostgreSQL.
+Set up a migration for the UserEntity schema and implement CRUD operations.
+5. Functional Pages
+Implement the following pages and functionality in the application:
+User Creation Page:
+A form for creating a new user, which includes:
+Validation for required fields, proper formatting, and real-time feedback for input errors.
+A submit button that will persist valid user data to the database.
+User List Page:
+Display all users from the database in a paginated list format.
+Enable easy navigation between pages of users.
+Development Setup
+PostgreSQL in Docker
+Set up and run PostgreSQL in a Docker container for local development.
+Use a docker-compose.yml file to create the PostgreSQL container.
+Ensure the database is accessible to the .NET application.
+Entity Framework Configuration
+Set up Entity Framework to work with the PostgreSQL database:
+Configure the connection string in your .NET application to connect to PostgreSQL.
+Use migrations to manage the database schema for the UserEntity class.
+Estimated Completion Time
+Estimated Time: 6-8 hours
+Evaluation Criteria
+Code quality and adherence to Domain-Driven Design principles.
+Functionality and usability of form validation on the frontend.
+Correct setup and configuration of PostgreSQL using Docker.
+Completion of required pages and seamless interaction with data between frontend and backend.
+Bonus
+Write unit tests for validation with XUnit and or Jest
+
+
+-------------------------------------------------------------
+
+Project Requirements for User Management Application
+Objective
+Create a C# 6.0 project using Domain-Driven Design principles to build a simple user management application.
+Tech Stack
+Backend: .NET (6) with Entity Framework
+Frontend: Next.js (TypeScript) for form creation and validation
+Database: PostgreSQL, run within a Docker container
+Features and Requirements
+1. Domain Model
+Define a UserEntity class to represent the user model:
+
+public class UserEntity
+
+{
+
+public string FirstName { get; set; }
+
+public string LastName { get; set; }
+
+public DateTime DateOfBirth { get; set; }
+
+public string PhoneNumber { get; set; }
+
+}
+
+2. Frontend Requirements
+Develop the following pages using Next.js:
+User Creation Page:
+A form for entering user details: First Name, Last Name, Date of Birth, and Phone Number.
+Implement form validation with:
+Required fields for all inputs.
+Proper formatting checks for Date of Birth and Phone Number.
+Provide real-time feedback to the user for any validation errors.
+User List Page:
+Display a list of all users stored in the database.
+Include pagination to improve the user experience when there are many users.
+3. Data Validation Requirements
+Name Validation:
+Both FirstName and LastName fields must not be null or empty and must contain more than 1 character.
+Date of Birth (DOB) Validation:
+Ensure the user is at least 18 years old.
+Phone Number Formatting:
+The phone number should be stored and displayed in a standard format (e.g., (XXX) XXX-XXXX).
+Client-Side Validation:
+Validate data directly in the Next.js form to provide immediate feedback to the user.
+Server-Side Validation:
+Ensure data meets validation requirements on the backend before persisting it to the database.
+4. Database Setup
+Use PostgreSQL as the database for storing user data.
+Docker:
+Configure a docker-compose.yml file to spin up a PostgreSQL instance for local development.
+Example docker-compose.yml configuration:
+
+version: '3.8'
+
+services:
+
+postgres:
+
+image: postgres:latest
+
+environment:
+
+POSTGRES_USER: user
+
+POSTGRES_PASSWORD: password
+
+POSTGRES_DB: userdb
+
+ports:
+
+- "5432:5432"
+
+Entity Framework Configuration:
+Use Entity Framework to connect to PostgreSQL.
+Set up a migration for the UserEntity schema and implement CRUD operations.
+5. Functional Pages
+Implement the following pages and functionality in the application:
+User Creation Page:
+A form for creating a new user, which includes:
+Validation for required fields, proper formatting, and real-time feedback for input errors.
+A submit button that will persist valid user data to the database.
+User List Page:
+Display all users from the database in a paginated list format.
+Enable easy navigation between pages of users.
+Development Setup
+PostgreSQL in Docker
+Set up and run PostgreSQL in a Docker container for local development.
+Use a docker-compose.yml file to create the PostgreSQL container.
+Ensure the database is accessible to the .NET application.
+Entity Framework Configuration
+Set up Entity Framework to work with the PostgreSQL database:
+Configure the connection string in your .NET application to connect to PostgreSQL.
+Use migrations to manage the database schema for the UserEntity class.
+Estimated Completion Time
+Estimated Time: 6-8 hours
+Evaluation Criteria
+Code quality and adherence to Domain-Driven Design principles.
+Functionality and usability of form validation on the frontend.
+Correct setup and configuration of PostgreSQL using Docker.
+Completion of required pages and seamless interaction with data between frontend and backend.
+Bonus
+Write unit tests for validation with XUnit and or Jest
+
+
+
+---------------------------------------------------------------------
+Solution 
+*********************************************************************
+
+
+Step 1: Set Up the Backend (.NET 6 Project)
+Create a .NET Project
+
+Open a terminal and create a new .NET web API project:
+bash
+Copy code
+dotnet new webapi -n UserManagementApp
+
+dotnet new webapi -n UserManagementApp -f net6.0
+
+cd UserManagementApp
+Install necessary packages:
+bash
+Copy code
+dotnet add package Npgsql.EntityFrameworkCore.PostgreSQL
+dotnet add package Microsoft.EntityFrameworkCore.Design
+Define the Domain Model
+
+In Models folder, create the UserEntity class with the specified properties:
+csharp
+Copy code
+public class UserEntity
+{
+    public int Id { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+    public DateTime DateOfBirth { get; set; }
+    public string PhoneNumber { get; set; }
+}
+Set Up DbContext
+
+Create a new ApplicationDbContext class in a Data folder:
+csharp
+Copy code
+public class ApplicationDbContext : DbContext
+{
+    public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) {}
+
+    public DbSet<UserEntity> Users { get; set; }
+}
+In appsettings.json, add a connection string:
+json
+Copy code
+"ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=userdb;Username=user;Password=password"
+}
+In Program.cs, configure Entity Framework:
+csharp
+Copy code
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+Create a Migration
+
+Run these commands to create and apply a migration:
+bash
+Copy code
+dotnet ef migrations add InitialCreate
+dotnet ef database update
+Add CRUD Controllers
+
+Add a UsersController to handle create and read (list) operations.
+Implement server-side validation for age, names, and phone number format in UserEntity properties or within controller actions.
+Step 2: Set Up the Database with Docker
+Docker Compose Setup
+In the root of the project, create docker-compose.yml:
+yaml
+Copy code
+version: '3.8'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: userdb
+    ports:
+      - "5432:5432"
+Start the database with:
+bash
+Copy code
+docker-compose up -d
+Step 3: Set Up the Frontend (Next.js with TypeScript)
+Initialize Next.js Project
+
+In the root directory:
+bash
+Copy code
+npx create-next-app@latest user-management-frontend --typescript
+cd user-management-frontend
+npm install axios
+User Creation Page
+
+In the pages directory, create a create-user.tsx page:
+Add a form with inputs for First Name, Last Name, Date of Birth, and Phone Number.
+Use react-hook-form for form validation and display error messages for validation issues.
+Submit valid data to the API using axios.
+typescript
+Copy code
+import { useForm } from "react-hook-form";
+import axios from "axios";
+
+interface UserFormData {
+    firstName: string;
+    lastName: string;
+    dateOfBirth: string;
+    phoneNumber: string;
+}
+
+export default function CreateUser() {
+    const { register, handleSubmit, errors } = useForm<UserFormData>();
+    const onSubmit = async (data: UserFormData) => {
+        await axios.post("http://localhost:5000/api/users", data);
+    };
+
+    return (
+        <form onSubmit={handleSubmit(onSubmit)}>
+            {/* Input fields with validation */}
+        </form>
+    );
+}
+User List Page
+
+In pages, create user-list.tsx to display paginated user data:
+Fetch users from the API and implement pagination logic.
+Display users in a table format.
+Step 4: Implement Validation
+Frontend Validation
+
+Add validation to ensure:
+First and Last Name are at least 2 characters.
+Date of Birth confirms user is 18+.
+Phone Number follows the (XXX) XXX-XXXX format.
+Implement react-hook-form validation in the CreateUser component.
+Server-Side Validation
+
+In UsersController, validate the incoming data using .NET annotations or custom logic before saving:
+csharp
+Copy code
+if (!ModelState.IsValid)
+    return BadRequest(ModelState);
+Step 5: Testing and Deployment
+Unit Testing with xUnit (Backend)
+
+Create xUnit tests for validation methods and API endpoints.
+Example test for age validation:
+csharp
+Copy code
+[Fact]
+public void User_ShouldBe_AtLeast18YearsOld()
+{
+    // Arrange & Act & Assert
+}
+Frontend Testing with Jest (Frontend)
+
+Set up Jest and React Testing Library for form validation tests.
+Run and Verify
+
+Start both backend and frontend projects, ensuring full integration.
+Verify that Docker is running, PostgreSQL is accessible, and the application behaves as expected.
+This guide provides an outline for developing and deploying the User Management Application. Testing, pagination, and clean validation across front-end and back-end services will ensure quality and usability.
+
+
+
+
+
+
