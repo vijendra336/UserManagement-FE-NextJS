@@ -1,6 +1,17 @@
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+1. Run Postgress DB docker container in api 
+    docker-compose.yml file
+    docker-compose up -d
+
+2. Run API 
+    run .net 6 api with postgress db already setup
+    UserManagementApi 
+
+3. Run UI 
+    yarn run dev
+
 
 First, run the development server:
 
